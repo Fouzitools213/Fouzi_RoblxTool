@@ -5,15 +5,11 @@ setlocal EnableDelayedExpansion
 :: ONLINE LICENSE CHECK
 :: ==============================
 
-:: 🔗 Your allowed PC list
 set "LICENSE_URL=https://raw.githubusercontent.com/Fouzitools213/Fouzi_RoblxTool/main/allowed.txt"
 
 echo Checking license...
 
-:: Get PC name
 set "PC_NAME=%COMPUTERNAME%"
-
-:: Download allowed list and check
 set "AUTHORIZED=0"
 
 for /f "delims=" %%A in ('powershell -command "(Invoke-WebRequest -Uri \"%LICENSE_URL%\" -UseBasicParsing).Content"') do (
@@ -22,11 +18,8 @@ for /f "delims=" %%A in ('powershell -command "(Invoke-WebRequest -Uri \"%LICENS
 
 if "%AUTHORIZED%"=="0" (
     echo.
-    echo =====================================
     echo ❌ This PC is NOT licensed.
     echo PC Name: %PC_NAME%
-    echo Contact Fouzi Tools for access.
-    echo =====================================
     echo.
     pause
     exit
@@ -34,6 +27,7 @@ if "%AUTHORIZED%"=="0" (
 
 echo ✔ License verified for %PC_NAME%
 echo.
+
 
 
 set "LOCAL_VERSION=1.9.1"
@@ -910,4 +904,5 @@ if "%extracted%"=="0" (
     pause
     exit
 )
+
 exit /b 0
